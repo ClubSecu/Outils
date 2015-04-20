@@ -87,16 +87,30 @@ def LittleEndian2(d,s):
                     #print(len(msg1))
                     if (msg1[0]=="!litendian2"):  #ici pour modifier le mode de commande (ici !q)
                         #print(msg1[0])
+                        
                         if (len(msg1) == 3):
-                             
+                          
+                                    
                             #print("B")
                             
-                            message = struct.pack("<I",int(msg1[1])).encode('string-escape') 
-                            message ="l'adresse en littleEndian de "+msg1[1]+" est "+message
-                            #print message
+                            
+                            if (string.octdigits.find(msg1[1][0]) == -1):
+                                
+                                message = "c'est quoi cette merde que tu essayes de me fourgué"
+                            
+                            elif(string.octdigits.find(msg1[1][1])== -1 and  msg1[1][1] !="x" and msg1[1][1] !="b"):  
+                                
+                                message = "c'est quoi cette merde que tu essayes de me fourgué"
                             
                             
-                            s.send("PRIVMSG #clubsecu %s \r\n" %(message)) #je l'envoie dans le chan resir
+                                
+                                message = struct.pack("<I",int(msg1s),16).encode('string-escape') 
+                            
+                                message ="l'adresse en littleEndian de "+msg1[1]+" est "+message
+                                #print message
+                            
+                            
+                        s.send("PRIVMSG #resir %s \r\n" %(message)) #je l'envoie dans le chan resir
 
 
 def readline(line,d): #ne gere que PING, PVMSG et JOIN
