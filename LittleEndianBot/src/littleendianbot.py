@@ -12,7 +12,18 @@ import os
 
 #definir la fonction custom ici 
 
-
+def bite(d,s):
+    if (d != None): # je verifie que mon dicto n'est pas vide
+        if 'act' in d: #je verifie que mon dictio est bien forme
+            if (d['act'] == 'PRIVMSG'): # je check l'action est bien message
+                
+                if (d['src'][0] == '#'):  #si le message est sur un salon
+                    
+                    if(d['msg'] == "!bite "):
+                        
+                        message = "Nomekrax say BITE it, just BITE it"
+                        s.send("PRIVMSG #resir %s \r\n" %(message))
+        
 
 
 def readline(line,d): #ne gere que PING, PVMSG et JOIN
@@ -81,8 +92,9 @@ def run():
           
      
             d = readline(line, d)
-            #print(d)
+            print(d)
 #inserer la fonction custom ici
+            bite(d,s)
            
 
 if __name__ == "__main__":
