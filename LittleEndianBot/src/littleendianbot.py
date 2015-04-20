@@ -9,8 +9,22 @@ import sys
 import socket
 import string
 import os
+import struct
 
 #definir la fonction custom ici 
+
+def x42(d,s):
+    if (d != None): # je verifie que mon dicto n'est pas vide
+        if 'act' in d: #je verifie que mon dictio est bien forme
+            if (d['act'] == 'PRIVMSG'): # je check l'action est bien message
+                
+                if (d['src'][0] == '#'):  #si le message est sur un salon
+                    
+                    if(d['msg'] == "!0x42 "):
+                        
+                        message = "Bonne question ! " 
+                        s.send("PRIVMSG #clubsecu %s \r\n" %(message))
+
 
 def bite(d,s):
     if (d != None): # je verifie que mon dicto n'est pas vide
@@ -23,7 +37,66 @@ def bite(d,s):
                         
                         message = "Nomekrax say BITE it, just BITE it"
                         s.send("PRIVMSG #clubsecu %s \r\n" %(message))
+                        
+def Shellbash(d,s):
+    if (d != None): # je verifie que mon dicto n'est pas vide
+        if 'act' in d: #je verifie que mon dictio est bien forme
+            if (d['act'] == 'PRIVMSG'): # je check l'action est bien message
+                
+                if (d['src'][0] == '#'):  #si le message est sur un salon
+                    
+                    if(d['msg'] == "!shellbash "):
+                        
+                        message = " \\bin\\sh = \\x31\\xc0\\x31\\xdb\\x31\\xc9\\x31\\xd2\\x52\\x68\\x6e\\x2f\\x73\\x68\\x68\\x2f\\x2f\\x62\\x69\\x89\\xe3\\x52\\x53\\x89\\xe1\\xb0\\x0b\\xcd\\x80 -29bytes" 
+                        s.send("PRIVMSG #clubsecu %s \r\n" %(message))
+                        
+def LittleEndian(d,s):
+    if (d != None): # je verifie que mon dicto n'est pas vide
+        if 'act' in d: #je verifie que mon dictio est bien forme
+            if (d['act'] == 'PRIVMSG'): # je check l'action est bien message
+                
+                if (d['src'][0] == '#'):  #si le message est sur un salon
+                    msg1=d['msg'].split(" ")  #on decoupe 
+                    #print(msg1)
+                    #print(len(msg1))
+                    if (msg1[0]=="!litendian"):  #ici pour modifier le mode de commande (ici !q)
+                        #print(msg1[0])
+                        if (len(msg1) == 3):
+                            if (len(msg1[1])!=8):
+                                #print("A")
+                                message = "adresse incorrecte"
+                            else:     
+                                #print("B")
+                                #print
+                                message = "\\x"+msg1[1][6]+msg1[1][7]+"\\x"+msg1[1][4]+msg1[1][5]+"\\x"+msg1[1][2]+msg1[1][3]+"\\x"+msg1[1][0]+msg1[1][1]
+                                message ="l'adresse en littleEndian de "+msg1[1]+" est "+message
+                                #print message
+                            
+                            
+                            s.send("PRIVMSG #clubsecu %s \r\n" %(message)) #je l'envoie dans le chan resir
+
         
+def LittleEndian2(d,s):
+    if (d != None): # je verifie que mon dicto n'est pas vide
+        if 'act' in d: #je verifie que mon dictio est bien forme
+            if (d['act'] == 'PRIVMSG'): # je check l'action est bien message
+                
+                if (d['src'][0] == '#'):  #si le message est sur un salon
+                    msg1=d['msg'].split(" ")  #on decoupe 
+                    #print(msg1)
+                    #print(len(msg1))
+                    if (msg1[0]=="!litendian2"):  #ici pour modifier le mode de commande (ici !q)
+                        #print(msg1[0])
+                        if (len(msg1) == 3):
+                             
+                            #print("B")
+                            
+                            message = struct.pack("<I",int(msg1[1])).encode('string-escape') 
+                            message ="l'adresse en littleEndian de "+msg1[1]+" est "+message
+                            #print message
+                            
+                            
+                            s.send("PRIVMSG #clubsecu %s \r\n" %(message)) #je l'envoie dans le chan resir
 
 
 def readline(line,d): #ne gere que PING, PVMSG et JOIN
@@ -88,15 +161,19 @@ def run():
 
             if(line[0]=="PING"):
                 s.send("PONG %s\r\n" % line[1])
-            s.send("JOIN #resir\r\n")
+            s.send("JOIN #clubsecu\r\n")
           
      
             d = readline(line, d)
             print(d)
 #inserer la fonction custom ici
             bite(d,s)
+            LittleEndian(d,s)
+            LittleEndian2(d,s)
+            Shellbash(d,s)
+            x42(d,s)
            
 
 if __name__ == "__main__":
-   print(" Template-BOT  au Rapport")
+   print(" Robert-Bot au Rapport")
    run()
