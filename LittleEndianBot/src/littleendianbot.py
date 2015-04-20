@@ -22,7 +22,7 @@ def bite(d,s):
                     if(d['msg'] == "!bite "):
                         
                         message = "Nomekrax say BITE it, just BITE it"
-                        s.send("PRIVMSG #resir %s \r\n" %(message))
+                        s.send("PRIVMSG #clubsecu %s \r\n" %(message))
         
 
 
@@ -63,7 +63,7 @@ def readline(line,d): #ne gere que PING, PVMSG et JOIN
 def run():
     HOST="irc.clubsecu.fr"
     PORT=6667
-    NICK="LittleEndian-Bot" #a renommer 
+    NICK="Robert-Bot" #a renommer 
     IDENT="BOT"
     REALNAME="Sp1p3-Bot"
     readbuffer=""    
@@ -88,11 +88,11 @@ def run():
 
             if(line[0]=="PING"):
                 s.send("PONG %s\r\n" % line[1])
-            s.send("JOIN #clubsecu\r\n")
+            s.send("JOIN #resir\r\n")
           
      
             d = readline(line, d)
-            #print(d)
+            print(d)
 #inserer la fonction custom ici
             bite(d,s)
            
