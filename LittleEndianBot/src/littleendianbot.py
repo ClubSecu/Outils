@@ -88,11 +88,11 @@ def run():
 
             if(line[0]=="PING"):
                 s.send("PONG %s\r\n" % line[1])
-            s.send("JOIN #clubbsecu\r\n")
+            s.send("JOIN #clubsecu\r\n")
           
      
             d = readline(line, d)
-            print(d)
+            #print(d)
 #inserer la fonction custom ici
             bite(d,s)
            
