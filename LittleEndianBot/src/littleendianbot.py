@@ -88,7 +88,7 @@ def run():
 
             if(line[0]=="PING"):
                 s.send("PONG %s\r\n" % line[1])
-            s.send("JOIN #culbsecu\r\n")
+            s.send("JOIN #clubbsecu\r\n")
           
      
             d = readline(line, d)
