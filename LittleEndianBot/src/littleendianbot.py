@@ -52,7 +52,7 @@ def readline(line,d): #ne gere que PING, PVMSG et JOIN
 def run():
     HOST="irc.clubsecu.fr"
     PORT=6667
-    NICK="Template-Bot" #a renommer 
+    NICK="LittleEndian-Bot" #a renommer 
     IDENT="BOT"
     REALNAME="Sp1p3-Bot"
     readbuffer=""    
@@ -77,7 +77,7 @@ def run():
 
             if(line[0]=="PING"):
                 s.send("PONG %s\r\n" % line[1])
-            s.send("JOIN #resir\r\n")
+            s.send("JOIN #culbsecu\r\n")
           
      
             d = readline(line, d)
