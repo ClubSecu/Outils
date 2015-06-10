@@ -1,3 +1,11 @@
+/*
+    Author : Nomekrax
+    Creation : 29/05/15
+    Last Modification : 10/06/15
+    Informations : 
+        compile with : gcc -m32 getenvaddress.c -o getenvaddress
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
