@@ -1,4 +1,11 @@
 #!/usr/bin/python
+
+""" 
+    Author : Nomekrax
+    Date : 10/06/15
+    Informations : Python 2.7.3
+"""
+
 import struct
 import os
 import sys
