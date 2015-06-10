@@ -10,11 +10,11 @@
 - K.I.S.S <3
 
 ## TODO
-Add header for Perl
-Add header for PHP
-Add header for Shell
-Add header for Ruby
-Add header for ooik ooik !
+- Add header for Perl
+- Add header for PHP
+- Add header for Shell
+- Add header for Ruby
+- Add header for ooik ooik !
 
 ## Commit rules
 ### Creation :
