@@ -23,6 +23,8 @@
 "Modifying tool Example : Description of modified files and features added"
 ### Support :
 "Creating support tool : Features description and file's name"
+### Removing :
+"Removing fileName : Reason"
 
 ## Header rules
 Please be aware that in every tool, you need to add an header in the main file which has different specifications depending on programmation language.
