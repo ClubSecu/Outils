@@ -1,0 +1,4 @@
+#Alias for git to have nice logs ;)
+git config --global alias.nicelog 'log --graph --format="%Cred%h - %Creset[%Cblue%cn%Creset] - %C(yellow)%cd%Creset %n%s%n"'
+#To use it :
+git nicelog
