@@ -2,7 +2,8 @@
 
 """ 
     Author : Nomekrax
-    Date : 10/06/15
+    Creation : 10/06/15
+    Last modification : 11/06/2015
     Informations : Python 2.7.3
 """
 
