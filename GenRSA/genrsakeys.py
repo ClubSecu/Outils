@@ -67,9 +67,8 @@ verif_e(e, phi_n)
 d = modinv(e, phi_n)
 
 """ Show all values """
-print "p: ", p
-print "q: ", q
-print "e: ", e
-print "phi_n: ", phi_n
-print "n: ", n
-print "d: ", d
+pubkey={'e':e, 'n':n}
+privkey={'d':d, 'n':n}
+print "Generating RSA keys pair ..."
+print "Public key  : ", pubkey
+print "Private key : ", privkey
